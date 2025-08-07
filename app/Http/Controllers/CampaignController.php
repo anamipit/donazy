@@ -11,7 +11,7 @@ class CampaignController extends Controller
 {
     public function index(): View
     {
-        $query = Campaign::query()->published()->with('media');
+        $query = Campaign::query()->published();
 
         $campaigns = PaginationService::make($query)
             ->setSearchables([
