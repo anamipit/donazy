@@ -23,7 +23,7 @@ class Banner extends Model implements HasMedia
     public function registerMediaConversions(?Media $media = null): void
     {
         $this->addMediaConversion('thumbnail')
-            ->width(300)
+            ->width(600)
             ->nonQueued();
     }
 
