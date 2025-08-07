@@ -51,14 +51,15 @@ class TransactionSeeder extends Seeder
 
             Transaction::create([
                 'campaign_id' => $campaignIds[array_rand($campaignIds)],
+                'user_id' => 1, // Assign to Super Admin
                 'user_name' => $userName,
                 'user_email' => $faker->email,
-                'anonymous' => 0,
+                'is_anonymous' => 0,
                 'amount' => $nominal,
                 'unique_code' => $uniqueCode,
                 'total' => $nominal + $uniqueCode,
                 'created_at' => $faker->dateTimeBetween('2025-01-01', '2025-06-30'),
-                'status' => 'PAID',
+                'status' => 'paid',
             ]);
         }
     }

@@ -68,7 +68,7 @@
                 <div class="mt-4">
                     @foreach ($transactions as $transaction)
                         <div class="flex items-center space-x-2 shadow bg-gray-100 rounded p-2 mb-2">
-                            <img src="https://via.placeholder.com/50" class="h-16 rounded-full" />
+                            <img src="https://avatar.iran.liara.run/username?username={{ !$transaction->isAnonymous() ? $transaction->user_name : 'anonymous' }}" class="h-16 rounded-full" />
                             <div>
                                 <p class="text-primary leading-tight">{{ !$transaction->isAnonymous() ? $transaction->user_name : 'Hamba Allah' }}</p>
                                 <p class="leading-tight">
