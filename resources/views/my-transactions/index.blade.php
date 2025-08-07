@@ -20,6 +20,13 @@
             <div class="mb-4"></div>
 
             <x-bg-main class="p-4">
+                <h3 class="font-semibold mb-4">Riwayat Donasi (12 Bulan Terakhir)</h3>
+                <canvas id="donationChart"></canvas>
+            </x-bg-main>
+
+            <div class="mb-4"></div>
+
+            <x-bg-main class="p-4">
                 @if ($transactions->isNotEmpty())
                     @foreach ($transactions as $transaction)
                         <a href="{{ route('transactions.show', ['code' => $transaction->code]) }}" class="flex items-start space-x-4">
@@ -67,4 +74,40 @@
     </x-container>
 
     <x-bottom-bar />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('donationChart').getContext('2d');
+        const chartData = @json($chartData);
+
+        const labels = Array.from({ length: 12 }, (_, i) => {
+            const month = new Date(null, i, 1).toLocaleString('id-ID', { month: 'long' });
+            return month;
+        });
+
+        const data = Array.from({ length: 12 }, (_, i) => {
+            return chartData[i + 1] || 0;
+        });
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total Donasi',
+                    data: data,
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </x-app>
