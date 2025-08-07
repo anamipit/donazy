@@ -31,7 +31,7 @@
 
     <x-container class="pt-24">
         <div class="w-full p-4 flex justify-center">
-            <img src="https://i.ibb.co/F7K52H7/donazy-logo-rounded.png" alt="{{ Config::get('app.name') }}" class="h-20">
+            <img src="{{ asset('images/logo.png') }}" alt="{{ Config::get('app.name') }}" class="h-20">
         </div>
         <x-bg-main class="w-full p-4">
             {!! $slot !!}

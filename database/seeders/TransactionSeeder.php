@@ -44,7 +44,7 @@ class TransactionSeeder extends Seeder
             'Yani Suryani', 'Yanto Basna', 'Yoga Pratama', 'Yudi Karyono', 'Zainal Abidin', 'Zaskia Adya Mecca'
         ];
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 20; $i++) {
             $nominal = $nominalOptions[array_rand($nominalOptions)];
             $uniqueCode = rand(100, 999);
             $userName = $indonesianNames[array_rand($indonesianNames)];
@@ -54,12 +54,12 @@ class TransactionSeeder extends Seeder
                 'user_id' => 1, // Assign to Super Admin
                 'user_name' => $userName,
                 'user_email' => $faker->email,
-                'is_anonymous' => 0,
+                'anonymous' => 1,
                 'amount' => $nominal,
                 'unique_code' => $uniqueCode,
                 'total' => $nominal + $uniqueCode,
                 'created_at' => $faker->dateTimeBetween('2025-01-01', '2025-06-30'),
-                'status' => 'paid',
+                'status' => 'PAID',
             ]);
         }
     }
